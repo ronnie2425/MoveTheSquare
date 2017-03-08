@@ -2,7 +2,7 @@ package edu.ycp.cs320.movethesquare.controllers;
 
 import edu.ycp.cs320.movethesquare.model.Game;
 import edu.ycp.cs320.movethesquare.model.Square;
-
+//change
 public class GameController {
 	public void computeSquareMoveDirection(Game game, Square square, double mouseX, double mouseY) {
 		if (mouseX >= 0 && mouseX < game.getWidth() && mouseY >= 0 && mouseY < game.getHeight()) {
@@ -27,7 +27,9 @@ public class GameController {
 	}
 
 	public void moveSquare(Game model, Square square) {
-		square.setX(square.getX() + model.getSquareDx());
-		square.setY(square.getY() + model.getSquareDy());
+		if (square.getX() + model.getSquareDx()>0&&square.getX() + model.getSquareDx()<540)//prevent moving off x
+			square.setX(square.getX() + model.getSquareDx());
+		if (square.getY() + model.getSquareDy()>0&&square.getY() + model.getSquareDy()<380)//prevent moving off y
+			square.setY(square.getY() + model.getSquareDy());
 	}
 }
